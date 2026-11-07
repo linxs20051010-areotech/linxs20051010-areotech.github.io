@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林向上 · Xiangshang Lin</title>
+<meta name="description" content="林向上 — 清华大学未央书院，数理基础科学 + 能源与动力工程。科学机器学习与流场时空动力学预测。">
+<style>
+  :root {
+    --ink: #1a1f2b;
+    --sub: #5b6472;
+    --accent: #6c5ce7;
+    --accent-soft: #f0edff;
+    --line: #e6e8ee;
+    --bg: #fafafc;
+    --card: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.75;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  header {
+    background: linear-gradient(135deg, #4b3fd4 0%, #6c5ce7 55%, #8f7bff 100%);
+    color: #fff;
+    padding: 72px 0 60px;
+  }
+  .hero h1 { font-size: 2.4rem; letter-spacing: 1px; font-weight: 700; }
+  .hero .en-name { font-size: 1.15rem; opacity: .85; font-weight: 400; margin-top: 2px; }
+  .hero .affil { margin-top: 18px; font-size: 1.05rem; opacity: .95; }
+  .hero .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    font-size: .82rem;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.28);
+    backdrop-filter: blur(4px);
+  }
+  .hero .contact { margin-top: 26px; font-size: .95rem; }
+  .hero .contact a { color: #fff; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,.5); }
+  .hero .contact a:hover { border-bottom-style: solid; }
+
+  /* ---------- Language toggle ---------- */
+  .lang-switch {
+    position: absolute; top: 20px; right: 24px;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff; font-size: .85rem;
+    padding: 6px 16px; border-radius: 999px;
+    cursor: pointer; font-family: inherit;
+    transition: background .2s;
+  }
+  .lang-switch:hover { background: rgba(255,255,255,.3); }
+
+  header { position: relative; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 44px 0 8px; }
+  h2 {
+    font-size: 1.25rem; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+  }
+  h2::before {
+    content: ""; width: 5px; height: 20px; border-radius: 3px;
+    background: var(--accent); display: inline-block; flex: none;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(26,31,43,.04);
+  }
+
+  /* education */
+  .edu-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .edu-row b { font-size: 1.05rem; }
+  .meta { color: var(--sub); font-size: .9rem; }
+  .gpa { margin-top: 8px; }
+  .gpa strong { color: var(--accent); font-size: 1.05rem; }
+  .courses { margin-top: 12px; color: var(--sub); font-size: .88rem; }
+  .courses span {
+    display: inline-block; background: var(--accent-soft);
+    color: var(--accent); border-radius: 6px;
+    padding: 1px 10px; margin: 3px 4px 3px 0; font-size: .82rem;
+  }
+
+  /* research */
+  .proj h3 { font-size: 1.02rem; margin-bottom: 2px; }
+  .proj .role { color: var(--accent); font-size: .85rem; font-weight: 600; }
+  .proj ul { margin: 10px 0 0 0; padding-left: 20px; color: var(--sub); font-size: .92rem; }
+  .proj li { margin-bottom: 6px; }
+  .proj li::marker { color: var(--accent); }
+
+  /* publication */
+  .pub { font-size: .95rem; }
+  .pub em { color: var(--sub); }
+  .pub .badge {
+    display: inline-block; font-size: .75rem; font-style: normal;
+    background: #fff4e0; color: #b26a00; border-radius: 6px;
+    padding: 1px 10px; margin-left: 8px; vertical-align: 1px;
+  }
+
+  /* skills */
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .skill-grid .card { margin-bottom: 0; }
+  .skill-grid h3 { font-size: .95rem; margin-bottom: 8px; color: var(--ink); }
+  .skill-grid p { color: var(--sub); font-size: .9rem; }
+
+  /* honors */
+  .honors { list-style: none; }
+  .honors li {
+    padding: 9px 0 9px 26px;
+    border-bottom: 1px dashed var(--line);
+    position: relative; font-size: .93rem;
+  }
+  .honors li:last-child { border-bottom: none; }
+  .honors li::before {
+    content: "🏅"; position: absolute; left: 0; top: 10px; font-size: .9rem;
+  }
+  .honors .yr { color: var(--sub); font-size: .85rem; }
+
+  footer {
+    margin-top: 56px; padding: 28px 0 40px;
+    border-top: 1px solid var(--line);
+    color: var(--sub); font-size: .85rem; text-align: center;
+  }
+
+  /* bilingual visibility */
+  .zh-only { display: block; }
+  .en-only { display: none; }
+  html[lang="en"] .zh-only { display: none; }
+  html[lang="en"] .en-only { display: block; }
+  html[lang="en"] .zh-inline { display: none; }
+  html[lang="zh-CN"] .en-inline { display: none; }
+  .zh-inline, .en-inline { }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="lang-switch" id="langBtn" onclick="toggleLang()">EN</button>
+  <div class="wrap hero">
+    <h1><span class="zh-inline">林向上</span><span class="en-inline">Xiangshang Lin</span></h1>
+    <div class="en-name en-inline">Xiangshang Lin</div>
+    <div class="affil">
+      <span class="zh-inline">清华大学 未央书院 · 数理基础科学 + 能源与动力工程 · 本科</span>
+      <span class="en-inline">Tsinghua University, Weiyang College — Mathematics &amp; Physics + Energy and Power Engineering</span>
+    </div>
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">科学机器学习</span><span class="en-inline">Scientific ML</span></span>
+      <span class="tag"><span class="zh-inline">流场时空动力学预测</span><span class="en-inline">Spatiotemporal Flow Prediction</span></span>
+      <span class="tag"><span class="zh-inline">降阶模型</span><span class="en-inline">Reduced-Order Modeling</span></span>
+      <span class="tag"><span class="zh-inline">CFD</span><span class="en-inline">CFD</span></span>
+    </div>
+    <div class="contact">
+      📧 <a href="mailto:linxs23@mails.tsinghua.edu.cn">linxs23@mails.tsinghua.edu.cn</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- Education -->
+  <section>
+    <h2><span class="zh-inline">教育背景</span><span class="en-inline">Education</span></h2>
+    <div class="card">
+      <div class="edu-row">
+        <b><span class="zh-inline">清华大学 未央书院</span><span class="en-inline">Weiyang College, Tsinghua University</span></b>
+        <span class="meta">2023.08 – 2027.06</span>
+      </div>
+      <div class="meta"><span class="zh-inline">数理基础科学 + 能源与动力工程（本科）</span><span class="en-inline">Undergraduate, Mathematics and Physics + Energy and Power Engineering</span></div>
+      <div class="gpa">
+        <span class="zh-inline">GPA <strong>3.9 / 4.0</strong>
+        <span class="en-inline">GPA <strong>3.9 / 4.0</strong>
+      </div>
+      <div class="courses">
+        <span class="zh-inline">核心课程：</span><span class="en-inline">Key courses:</span>
+        <span>Calculus 99</span><span>Linear Algebra 98</span><span>Physics 96</span><span>Math Physics Eqs 98</span><span>Programming 98</span><span>Probability 98</span><span>Fluid Mechanics 98</span><span>Combustion Theory A</span><span>Heat Transfer A</span><span>Machine Learning A</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section>
+    <h2><span class="zh-inline">科研经历</span><span class="en-inline">Research Experience</span></h2>
+
+    <div class="card proj">
+      <h3><span class="zh-inline">基于张量分解的流场时空动力学降阶模型</span><span class="en-inline">Data-Driven Reduced-Order Modeling for Flow Prediction</span></h3>
+      <span class="meta"><span class="role zh-inline">项目负责人</span><span class="role en-inline">Project Leader</span> · 2025.08 – <span class="zh-inline">至今</span><span class="en-inline">Present</span></span>
+      <ul>
+        <li><span class="zh-inline">提出张量分解（TD）- LSTM 时空预测框架，用于非定常流场与燃烧过程的低维表征与演化预测</span><span class="en-inline">Proposed a novel tensor decomposition (TD)–LSTM framework for spatiotemporal prediction of flow fields</span></li>
+        <li><span class="zh-inline">在圆柱绕流与钝体稳焰算例中，相较 POD-LSTM、AE-LSTM 基准，在预测精度与数据压缩率上均取得更优表现</span><span class="en-inline">Outperformed POD-LSTM and AE-LSTM benchmarks in accuracy and data compression ratio on cylinder-flow and bluff-body flame cases</span></li>
+        <li><span class="zh-inline">以第一作者完成研究设计、仿真、数据分析与论文撰写，投稿至 Journal of Computational Physics</span><span class="en-inline">First-authored manuscript (research design, simulation, analysis, writing), submitted to Journal of Computational Physics</span></li>
+      </ul>
+    </div>
+
+    <div class="card proj">
+      <h3><span class="zh-inline">大语言模型驱动的流场仿真</span><span class="en-inline">Flow Field Simulation Driven by Large Language Models</span></h3>
+      <span class="meta"><span class="role zh-inline">项目负责人</span><span class="role en-inline">Project Leader</span> · 2024.12 – 2025.07</span>
+      <ul>
+        <li><span class="zh-inline">开发具备领域知识增强与工具调用能力的 LLM 智能体，搭建“知识检索 – CFD 执行 – 结果分析”闭环科研工作流</span><span class="en-inline">Developed a domain knowledge-augmented LLM agent with tool-calling, establishing a closed-loop workflow: knowledge retrieval → CFD execution → result analysis</span></li>
+        <li><span class="zh-inline">在一维傅里叶导热、泊肃叶流等基础算例上完成验证，减少高保真仿真的重复配置与人工干预</span><span class="en-inline">Validated on fundamental cases (1D Fourier heat conduction, Poiseuille flow), streamlining repetitive case configurations</span></li>
+        <li><span class="zh-inline">带领团队获第十九届“挑战杯”全国“揭榜挂帅”专项赛赛道擂主（特等奖第 1 名），奖金 12 万元</span><span class="en-inline">Led the team to the Grand Prize &amp; Track Championship (Ranked 1st) at the national “Challenge Cup” competition, winning a CNY 120,000 award</span></li>
+      </ul>
+    </div>
+
+    <div class="card proj">
+      <h3><span class="zh-inline">燃气轮机系统建模</span><span class="en-inline">Gas Turbine System Modeling</span></h3>
+      <span class="meta"><span class="role zh-inline">项目成员</span><span class="role en-inline">Project Member</span> · 2024.06 – 2024.12</span>
+      <ul>
+        <li><span class="zh-inline">基于 Python 构建燃气轮机热力循环求解器，建立压气机、燃烧室、涡轮等关键部件参数关系，实现系统级性能一体化估算</span><span class="en-inline">Built a Python solver for gas turbine thermodynamic cycles, coupling compressor / combustor / turbine models for system-level performance estimation</span></li>
+        <li><span class="zh-inline">利用高保真 CFD（OpenFOAM、ANSYS Fluent）标定部件模型，弥合低阶建模与物理现实的差距；团队产出国家发明专利 1 项，SRT 评级 A</span><span class="en-inline">Calibrated component models with high-fidelity CFD (OpenFOAM, ANSYS Fluent); team produced one Chinese invention patent, SRT rated A</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Publication -->
+  <section>
+    <h2><span class="zh-inline">论文</span><span class="en-inline">Publication</span></h2>
+    <div class="card pub">
+      <div>
+        <span class="zh-inline"><b>林向上</b>, Longfei Wang, Yanjie Tong, Yang Zhang, Xingjian Wang*. 基于张量分解的非定常燃烧过程时空演化降阶模型.</span>
+        <span class="en-inline"><b>Xiangshang Lin</b>, Longfei Wang, Yanjie Tong, Yang Zhang, Xingjian Wang*. Reduced-order modeling of spatiotemporal evolution of unsteady combustion processes using tensor decomposition.</span>
+        <span class="badge"><span class="zh-inline">投稿中</span><span class="en-inline">In submission</span></span>
+      </div>
+      <div class="meta" style="margin-top:6px"><em>Journal of Computational Physics</em></div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2><span class="zh-inline">技能与研究兴趣</span><span class="en-inline">Skills &amp; Interests</span></h2>
+    <div class="skill-grid">
+      <div class="card">
+        <h3><span class="zh-inline">专业技能</span><span class="en-inline">Skills</span></h3>
+        <p>Python · MATLAB · OpenFOAM · ANSYS Fluent · <span class="zh-inline">科学机器学习（MLP / CNN / LSTM）· LLM 智能体开发 · 科研可视化</span><span class="en-inline">Scientific ML (MLP / CNN / LSTM) · LLM agent development · scientific visualization</span></p>
+      </div>
+      <div class="card">
+        <h3><span class="zh-inline">研究兴趣</span><span class="en-inline">Research Interests</span></h3>
+        <p><span class="zh-inline">科学机器学习与时空动力学预测 · 降阶模型与数据同化 · 极端条件燃烧数值仿真 · 航空宇航推进系统优化</span><span class="en-inline">SciML &amp; spatiotemporal dynamics prediction · reduced-order modeling &amp; data assimilation · combustion simulation in extreme conditions · aerospace propulsion optimization</span></p>
+      </div>
+      <div class="card">
+        <h3><span class="zh-inline">语言</span><span class="en-inline">Languages</span></h3>
+        <p><span class="zh-inline">中文（母语）· 英语（CET-6 617 / TOEFL 100），具备学术写作与交流能力</span><span class="en-inline">Mandarin (native) · English (CET-6 617 / TOEFL 100), fluent in academic writing &amp; communication</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honors -->
+  <section>
+    <h2><span class="zh-inline">荣誉成果</span><span class="en-inline">Honors &amp; Awards</span></h2>
+    <div class="card">
+      <ul class="honors">
+        <li><span class="zh-inline">第十九届“挑战杯”全国“揭榜挂帅”专项赛赛道擂主（特等奖第 1 名，第一作者）</span><span class="en-inline">Grand Prize &amp; Track Champion (Ranked 1st), “Challenge Cup” National Competition (first author)</span> <span class="yr">2025</span></li>
+        <li><span class="zh-inline">北京市自然科学基金本科生“启研”计划</span><span class="en-inline">Beijing Natural Science Foundation Undergraduate “Qi-Yan” Program</span> <span class="yr">2026</span></li>
+        <li><span class="zh-inline">第 44 届清华大学“挑战杯”能源化工赛道二等奖（第二作者）</span><span class="en-inline">Second Prize, Energy &amp; Chemical Track, 44th Tsinghua “Challenge Cup” (second author)</span> <span class="yr">2026</span></li>
+        <li><span class="zh-inline">清华大学综合优秀奖学金 · 学业优秀奖学金 · 科技创新优秀奖学金 · 社会实践优秀奖学金</span><span class="en-inline">Tsinghua Comprehensive / Academic / Technological Innovation / Field Study Excellence Scholarships</span> <span class="yr">2024–2025</span></li>
+        <li><span class="zh-inline">国家发明专利：“基于多场耦合和压气机瞬态换热的燃机模拟方法及装置”</span><span class="en-inline">Chinese invention patent: gas turbine simulation method based on multi-field coupling &amp; compressor transient heat transfer</span> <span class="yr">2024</span></li>
+        <li><span class="zh-inline">入选能动系“学术优才”“科创优才”计划 · 多次 SRT A 评级</span><span class="en-inline">Selected for “Academic Elite” &amp; “Science Innovation Elite” programs; multiple SRT ratings of A</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="zh-inline">© 2025 林向上 · 由一个 HTML 文件构成</span>
+  <span class="en-inline">© 2025 Xiangshang Lin · Powered by a single HTML file</span>
+</footer>
+
+<script>
+function toggleLang() {
+  const html = document.documentElement;
+  const zh = html.lang === 'zh-CN';
+  html.lang = zh ? 'en' : 'zh-CN';
+  document.getElementById('langBtn').textContent = zh ? '中文' : 'EN';
+  document.title = zh ? 'Xiangshang Lin' : '林向上 · Xiangshang Lin';
+}
+</script>
+</body>
+</html>
